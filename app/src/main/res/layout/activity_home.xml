@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".home.view.HomeActivity">
+
+    <RadioGroup
+        android:id="@+id/tabs_rg"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:background="#dcdcdc"
+        android:orientation="horizontal"
+        tools:ignore="MissingConstraints">
+
+        <RadioButton
+            android:id="@+id/recommoend_tab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:button="@null"
+            android:gravity="center"
+            android:drawableTop="@drawable/recommend_select_drawable"
+            android:layout_weight="1"
+            android:layout_gravity="center"
+            android:checked="true"
+            android:text="推荐" />
+
+        <RadioButton
+            android:id="@+id/vedio_tab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:button="@null"
+            android:drawableTop="@drawable/video_select_drawable"
+            android:text="视频" />
+
+        <RadioButton
+            android:id="@+id/topic_tab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:button="@null"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:drawableTop="@drawable/topic_select_drawable"
+            android:text="专题" />
+
+        <RadioButton
+            android:id="@+id/my_tab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:drawableTop="@drawable/my_select_drawable"
+            android:button="@null"
+            android:text="我的" />
+    </RadioGroup>
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/fragment_vp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/tabs_rg"
+        tools:layout_editor_absoluteX="0dp" />
+
+
+
+</RelativeLayout>
