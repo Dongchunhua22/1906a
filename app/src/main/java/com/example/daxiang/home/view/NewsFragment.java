@@ -7,12 +7,15 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
 import com.bumptech.glide.Glide;
-import com.example.daxiang.Banner_Indicator;
 import com.example.daxiang.R;
+import com.example.daxiang.adapter.NewsAdapter;
 import com.example.daxiang.base.BaseFragment;
+import com.example.daxiang.base.BaseLayFragment;
 import com.example.daxiang.bean.NewsBean;
 import com.example.daxiang.home.constract.NewsFragmentContract;
 import com.example.daxiang.home.presenter.NewsPresenter;
@@ -22,15 +25,16 @@ import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class NewsFragment extends BaseFragment<NewsPresenter> implements NewsFragmentContract.INewsView{
+public class NewsFragment extends BaseLayFragment<NewsPresenter> implements NewsFragmentContract.INewsView {
     private  String tabID;
-    private ViewPager banner_viewPager;
+    private RecyclerView recyclerView;
 
-    private List<View> banner_views = new ArrayList<>();
+    private NewsAdapter newsAdapter;
 
-    private Banner_Indicator banner_indicator;
 
-    private int viewpage_Current_Pos = 0;
+
+
+
     public NewsFragment(String tabID) {
         this.tabID = tabID;
     }
@@ -53,8 +57,7 @@ public class NewsFragment extends BaseFragment<NewsPresenter> implements NewsFra
 
     @Override
     protected void initView(View view) {
-        banner_viewPager = view.findViewById(R.id.banner_viewpage);
-        banner_indicator =view.findViewById(R.id.banner_indicator);
+        recyclerView = view.findViewById(R.id.news_recycleview);
 
     }
 
@@ -69,13 +72,31 @@ public class NewsFragment extends BaseFragment<NewsPresenter> implements NewsFra
     }
 
     @Override
+    public void isCurrentVisibleToUser(boolean isVisible) {
+        //        当前Framgnet是显示还是隐藏
+
+        if(newsAdapter !=null) newsAdapter.isCurrentVisibleToUser(isVisible);
+    }
+
+
+    @Override
     public void setRecommendList(NewsBean newsBean) {
-        initBanner(newsBean);
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
+        recyclerView.setLayoutManager(layoutManager);
+        newsAdapter = new NewsAdapter(getActivity(),newsBean);
+        recyclerView.setAdapter(newsAdapter);
 
     }
-    int current_banner_item;
 
-    private void initBanner(final NewsBean newsBean){
+    @Override
+    public void onPause() {
+        super.onPause();
+
+    }
+
+    //int current_banner_item;
+
+    /*private void initBanner(final NewsBean newsBean){
 
         for (int i = 0; i <newsBean.getData().getBanner_list().size(); i++) {
             current_banner_item = i;
@@ -136,6 +157,6 @@ public class NewsFragment extends BaseFragment<NewsPresenter> implements NewsFra
             }
         };
         timer.schedule(timerTask,2000,2000);
-    }
+    }*/
 
 }
