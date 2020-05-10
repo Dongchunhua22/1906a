@@ -13,15 +13,18 @@
         app:tabPaddingStart="0dp"
         app:tabPaddingEnd="0dp"
         app:tabRippleColor="@android:color/transparent"
+        app:layout_constraintBottom_toTopOf="@id/myviewpage"
         app:tabIndicatorHeight="0dp"
         android:layout_height="50dp"
-        tools:ignore="MissingConstraints"/>
+        tools:ignore="MissingConstraints" />
 
     <androidx.viewpager.widget.ViewPager
         app:layout_constraintTop_toBottomOf="@id/mytablayout"
         android:id="@+id/myviewpage"
+
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="wrap_content"
         tools:ignore="MissingConstraints" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

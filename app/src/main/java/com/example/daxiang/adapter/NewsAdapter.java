@@ -1,13 +1,16 @@
 package com.example.daxiang.adapter;
 
 import android.app.Activity;
+import android.net.Uri;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.MediaController;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.VideoView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -23,6 +26,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
+
 
 public class NewsAdapter  extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
@@ -100,15 +104,35 @@ public class NewsAdapter  extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
 
         }else if(holder instanceof BigVideoHolder){//视频
             BigVideoHolder bigVideoHolder = (BigVideoHolder) holder;
+
+            MediaController controller = new MediaController(context);
+            bigVideoHolder.jzvdStd.setMediaController(controller);
+            Uri uri1 = Uri.parse(newsBean.getData().getArticle_list().get(position).getVideo_url());
+            bigVideoHolder.jzvdStd.setVideoURI(uri1);
+            bigVideoHolder.jzvdStd.start();
+
+
+          /*  videoView = (VideoView) findViewById(R.id.videoView);
+            MediaController controller = new MediaController(this);
+            videoView.setMediaController(controller);
+            Uri uri = Uri.parse(videoPath);//播放本地视频
+            videoView.setVideoURI(uri);
+            videoView.start();*/
+
+         /*   BigVideoHolder bigVideoHolder = (BigVideoHolder) holder;
             bigVideoHolder.jzvdStd.setUp(newsBean.getData().getArticle_list().get(position).getVideo_url(),
-                    newsBean.getData().getArticle_list().get(position).getTheme(), Jzvd.SCREEN_NORMAL);
+                    newsBean.getData().getArticle_list().get(position).getTheme(), JZVideoPlayer.SCREEN_NORMAL);
             bigVideoHolder.jzvdStd.positionInList = position;
             Glide.with(context)
                     .load(newsBean.getData().getArticle_list().get(position).getImage_url())
-                    .into(bigVideoHolder.jzvdStd.posterImageView);
+                    .into(bigVideoHolder.jzvdStd.posterImageView);*/
         }else if(holder instanceof MarqueeHolder){//跑马灯
 
         }
+     /*   、、JCVideoPlayer jCVideoPlayer = (JCVideoPlayer) findViewById(R.id.videocontroller);
+        videoController.setUp("视频/MP3地址","视频/MP3标题");
+        videoController.ivThumb.setThumbInCustomProject("视频/MP3缩略图地址");
+————————————————*/
 
 
     }
@@ -202,12 +226,13 @@ public class NewsAdapter  extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
      * 视频
      */
     class BigVideoHolder extends RecyclerView.ViewHolder{
-        private JzvdStd jzvdStd;
+        //private JZVideoPlayer jzvdStd;
+        private VideoView jzvdStd;
         private TextView video_title;
         private TextView video_type;
         public BigVideoHolder(@NonNull View itemView) {
             super(itemView);
-            jzvdStd = itemView.findViewById(R.id.big_video_player);
+            jzvdStd = itemView.findViewById(R.id.list_video);
             video_title = itemView.findViewById(R.id.big_video_title);
             video_type = itemView.findViewById(R.id.big_video_type);
         }

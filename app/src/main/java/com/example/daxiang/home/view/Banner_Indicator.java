@@ -83,7 +83,4 @@ public class Banner_Indicator extends View {
 //        绘制
         canvas.drawRect(rectF,paint);
     }
-
-
-
 }

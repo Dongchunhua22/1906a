@@ -61,6 +61,7 @@ public class RecommendFragment extends BaseFragment<RecommendPresenter> implemen
         newsFragmentAdapter = new NewsFragmentAdapter(getChildFragmentManager(),fragments);
         viewPager.setAdapter(newsFragmentAdapter);
         tabLayout.setupWithViewPager(viewPager);
+        viewPager.setOffscreenPageLimit(columList.getData().getList().size());
 
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             //@RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
@@ -76,6 +77,7 @@ public class RecommendFragment extends BaseFragment<RecommendPresenter> implemen
                 TextView customView = (TextView) tab.getCustomView();
                 drawable.setStroke(1, Color.parseColor("#ff00ff"));
                 drawable.setColor(Color.parseColor("#"+columList.getData().getList().get(tab.getPosition()).getBack_color()));
+              //  drawable.setColor(Color.parseColor("#"+columList.getData().getList().get(tab.getPosition()).getBack_color()));
                 customView.setBackground(drawable);
             }
 

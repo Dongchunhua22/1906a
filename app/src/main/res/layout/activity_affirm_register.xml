@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <EditText
+        android:id="@+id/affreg_passward"
+        android:hint="请输入密码"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        tools:ignore="MissingConstraints" />
+
+
+    <EditText
+        android:id="@+id/affreg_affirmpassword"
+        app:layout_constraintTop_toBottomOf="@id/affreg_passward"
+        android:hint="请确认密码"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        tools:ignore="MissingConstraints" />
+
+
+    <Button
+        android:id="@+id/arrirm_regbug"
+        app:layout_constraintTop_toBottomOf="@id/affreg_affirmpassword"
+        android:layout_width="wrap_content"
+        android:text="注册"
+        android:layout_height="wrap_content"
+        tools:ignore="MissingConstraints" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".login.view.LoginActivity">
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
     <EditText
-        android:id="@+id/phone_num"
+        android:id="@+id/reg_phone_num"
         android:hint="请输入手机号"
         android:layout_width="match_parent"
         android:layout_height="80dp"
@@ -14,8 +13,8 @@
 
 
     <EditText
-        android:id="@+id/verified"
-        app:layout_constraintTop_toBottomOf="@id/phone_num"
+        android:id="@+id/reg_verified"
+        app:layout_constraintTop_toBottomOf="@id/reg_phone_num"
         android:hint="请输入验证码"
         android:layout_width="match_parent"
         android:layout_height="80dp"
@@ -23,28 +22,18 @@
 
 
     <Button
-        android:id="@+id/send_verfied_bug"
-        app:layout_constraintTop_toBottomOf="@id/verified"
+        android:id="@+id/reg_send_verfied_bug"
+        app:layout_constraintTop_toBottomOf="@id/reg_verified"
         android:layout_width="wrap_content"
         android:text="获取验证码"
         android:layout_height="wrap_content"
         tools:ignore="MissingConstraints" />
 
     <Button
-        android:id="@+id/login_but"
-        android:text="登录"
-        app:layout_constraintTop_toBottomOf="@id/verified"
-        app:layout_constraintLeft_toRightOf="@id/send_verfied_bug"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        tools:ignore="MissingConstraints" />
-
-
-    <Button
+        android:id="@+id/reg_but"
         android:text="注册"
-        app:layout_constraintTop_toBottomOf="@id/login_but"
-        android:id="@+id/regiest_but"
-        android:onClick="startRegister"
+        app:layout_constraintTop_toBottomOf="@id/reg_verified"
+        app:layout_constraintLeft_toRightOf="@id/reg_send_verfied_bug"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         tools:ignore="MissingConstraints" />
